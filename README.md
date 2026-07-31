@@ -13,11 +13,21 @@ Student_Mood_Detector/
 │   ├── Phase_3_Exploration.ipynb
 │   └── Phase_4_Cleaning.ipynb
 ├── models
-├── app
-├── images
+│   └── mood_model.joblib
+├── train_model.py
+├── app.py
 ├── report
 │   └── proposal.md
+├── requirements.txt
 └── README.md
+```
+
+## Running it
+
+```bash
+pip install -r requirements.txt
+python train_model.py   # trains the model, saves models/mood_model.joblib
+streamlit run app.py    # launches the web app
 ```
 
 ## Dataset Information
@@ -39,3 +49,5 @@ Student_Mood_Detector/
 - **Phase 3:** Notebook created for EDA with pandas operations and visualizations (Histograms, Boxplots, Correlation Heatmap).
 - **Phase 4:** Data cleaning notebook created (handling duplicates, missing values, encoding, scaling, and train/test splits).
 - **Phase 5:** Proposal updated in `report/proposal.md` based on the new dataset features.
+- **Phase 6:** `train_model.py` builds a scikit-learn pipeline (median/impute + scale + one-hot encode + RandomForest, `class_weight="balanced"` for the imbalanced target) and saves it to `models/mood_model.joblib`.
+- **Phase 7:** `app.py` is a Streamlit app that loads the saved model and predicts depression risk from user-entered Age, Gender, Sleep Duration, and Academic Pressure.
